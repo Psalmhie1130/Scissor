@@ -101,6 +101,12 @@ const Home = () => {
     };
     verify();
   }, []);
+  if (isLoading)
+    return (
+      <main className=" w-screen h-screen bg-[#131113] flex justify-center items-center">
+        <Loader />
+      </main>
+    );
   return (
     <section className=" bg-[#131113] w-screen h-screen p-0 m-0">
       <Header />
