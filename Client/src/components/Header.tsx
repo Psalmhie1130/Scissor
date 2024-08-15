@@ -1,9 +1,43 @@
 import { useModals, useUser } from "@/store/UserStore";
+import { useState } from "react";
+import { useToast } from "./ui/use-toast";
+import axios from "axios";
+import Loader from "./Loader";
 
 const Header = () => {
-  const { userLoggedIn } = useUser();
+  axios.defaults.withCredentials = true;
+  const { toast } = useToast();
+  const { userLoggedIn, setUserLoggedIn } = useUser();
   const { setSignIn, setSignUp } = useModals();
-  const logoutFunction = async () => {};
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const logoutFunction = async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.post("https://scissor3.onrender.com/logout");
+      if (response.status === 200) {
+        setUserLoggedIn(false);
+        toast({
+          title: "Logged out",
+          description: "Logged out successfully",
+        });
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: "An unknown error occoured",
+        });
+      }
+    } catch (err) {
+      console.log(err);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "An uknown error occoured",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <nav className=" w-screen  bg-[#131113] text-white px-4 py-3 lg:px-8 flex justify-between items-center">
       <h1 className="text-3xl font-semibold lg:text-4xl hover:brightness-75 transition-all ease-in-out duration-300">
@@ -16,7 +50,7 @@ const Header = () => {
             onClick={logoutFunction}
             className=" text-gray-400 hover:text-white text-xl transition-all ease-in-out duration-300 hover:shadow-lg"
           >
-            Logout
+            {isLoading ? <Loader /> : "Logout"}
           </button>
         ) : (
           <>

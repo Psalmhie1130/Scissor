@@ -148,7 +148,7 @@ const Home = () => {
             {isSubmitLoading ? <Loader /> : "Shorten"}
           </button>
         </form>
-        {!userLoggedIn && (
+        {userLoggedIn && (
           <button
             type="button"
             onClick={() => {
