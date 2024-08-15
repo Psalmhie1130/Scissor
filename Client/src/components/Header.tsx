@@ -9,6 +9,7 @@ const Header = () => {
   const { toast } = useToast();
   const { userLoggedIn, setUserLoggedIn } = useUser();
   const { setSignIn, setSignUp } = useModals();
+  const { setEmail, setPassword } = useForm();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const logoutFunction = async () => {
     setIsLoading(true);
@@ -36,6 +37,8 @@ const Header = () => {
       });
     } finally {
       setIsLoading(false);
+      setPassword("");
+      setEmail("");
     }
   };
   return (
