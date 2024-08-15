@@ -63,7 +63,7 @@ const Tables = () => {
             <BlueButton
               buttonText="Download"
               handleClick={() => downloadQRCode(shortenedLink, qrCodeIndex)}
-              className="py-3 px-4"
+              className="py-3 px-4 rounded-full"
               type="button"
             />
           </TableCell>
