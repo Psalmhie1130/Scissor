@@ -14,7 +14,7 @@ const Header = () => {
   const logoutFunction = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.post("https://scissor3.onrender.com/logout");
+      const response = await axios.post("https://scissor-g95d.onrender.com/logout");
       if (response.status === 200) {
         setUserLoggedIn(false);
         toast({
