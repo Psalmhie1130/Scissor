@@ -84,6 +84,7 @@ const Home = () => {
     } finally {
       setDomain("");
       setLink("");
+      setIsSubmitLoading(false)
     }
   };
   useEffect(() => {
