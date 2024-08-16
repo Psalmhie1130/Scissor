@@ -1,4 +1,3 @@
-//Imports
 import userModel from "../schemas/user.js";
 import bcrypt from "bcryptjs";
 import SignToken from "../utils/helpers/signToken.js";
