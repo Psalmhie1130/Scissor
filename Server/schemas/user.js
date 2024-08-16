@@ -5,4 +5,4 @@ const userSchema = new Schema({
 });
 
 const userModel = model("userModel", userSchema);
-export default userModel;
+export default userModel

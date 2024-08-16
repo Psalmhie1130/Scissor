@@ -5,7 +5,6 @@ export const createLink = async (req, res) => {
   try {
     const user = req.user; // Assuming user is added to the request object
     const { link, domain } = req.body;
-    console.log(domain);
     // Validate input
     if (!link) return res.status(400).json({ err: "Please input a link" });
 
